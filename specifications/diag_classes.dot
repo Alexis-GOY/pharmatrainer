@@ -1,0 +1,35 @@
+digraph hierarchy {
+  size="20,20"
+  concentrate=true
+  node[shape=record,style=filled,fillcolor=gray95]
+  edge[dir=back, arrowtail=empty]
+
+#  2[label = "{Molecule| - inn : string\n - molecularFormula : string|+Molecule(inn : string, molecularFormula : string)\n + getINN() : string\n + getMolecularFormula() : string}"]
+
+#  3[label = "{User| - username : string\n - displayName : string\n|+User(username : string, displayName : string)\n + getUsername() : string\n + getDisplayName() : string}"]
+
+#  4[label = "{Teacher||}"]
+
+#  5[label = "{Student| - rank : string\n - exp : int\n - expToNextRank : int|+Student(username : string, displayName : string)\n + getRank() : string\n + getExp() : int\n + getExpToNextRank() : int\n + earnExp(exp : int)}"]
+
+ 6[label = "{Exercise| - questions : array of Question| + Exercise(title : string)\n + getTitle() : string\n + addQuestion(question : Question)\n + getCurrentQuestion() : Question\n + moveToNextQuestion()}"]
+
+ 7[label = "{Question| - instructions : string\n - picture : Image\n - answers : array of Answer\n - chosenAnswerIndex : int|+ Question(instructions : string, picture : Image)\n + getInstructions() : string\n+ getPicture() : Image\n + addAnwer(answer : Answer)\n + getAnswer(answerIndex : int) : Answer\n + countAnswers() : int\n + chooseAnswer(answerIndex : int)\n + isAnswerCorrect() : bool}"]
+
+  8[label = "{Answer| - label : string\n - picture : Image\n|+ Answer(label : string, picture : Image, correct : bool)\n + isCorrect() : bool\n + getLabel() : string\n + getPicture() : Image}"]
+
+#  9[label = "{DataBase| - connected : bool| +DataBase(location : string, username : string, password : string)\n + loadExercise(exerciseName : string) : Exercise\n + addExercise(exercise : Exercise, exerciseName : string) : string\n + loginUser(username : string, hashedPassword : string) : User}"]
+
+
+6->7 [arrowtail=odiamond]
+7->6 [arrowtail=vee];
+7->8 [arrowtail=odiamond];
+8->7 [arrowtail=vee];
+
+#  2->3
+#  2->4
+#  5->5[constraint=false, arrowtail=odiamond]
+#  4->3[constraint=false, arrowtail=odiamond]
+#  2->5[constraint=false, arrowtail=odiamond]
+#  5->6[arrowtail=odiamond]
+}
