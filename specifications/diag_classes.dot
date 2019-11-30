@@ -1,35 +1,33 @@
 digraph hierarchy {
-  size="20,20"
-  concentrate=true
+  size="40,40"
   node[shape=record,style=filled,fillcolor=gray95]
-  edge[dir=back, arrowtail=empty]
+  edge[dir=back, arrowtail=none]
 
-#  2[label = "{Molecule| - inn : string\n - molecularFormula : string|+Molecule(inn : string, molecularFormula : string)\n + getINN() : string\n + getMolecularFormula() : string}"]
+ Exercise [label = "{Exercise| - title : string| + Exercise(title : string)\n + getTitle() : string\n + addQuestion(question : Question)\n + getCurrentQuestion() : Question\n + moveToNextQuestion()}"]
 
-#  3[label = "{User| - username : string\n - displayName : string\n|+User(username : string, displayName : string)\n + getUsername() : string\n + getDisplayName() : string}"]
+ Question [label = "{Question| - instructions : string\n - picture : Image\n - chosenAnswerIndex : int|+ Question(instructions : string, picture : Image)\n + getInstructions() : string\n+ getPicture() : Image\n + addAnswer(answer : Answer)\n + getAnswer(answerIndex : int) : Answer\n + countAnswers() : int\n + chooseAnswer(answerIndex : int)\n + isAnswerCorrect() : bool}"]
 
-#  4[label = "{Teacher||}"]
+ Answer [label = "{Answer| - label : string\n - picture : Image\n|+ Answer(label : string, picture : Image, correct : bool)\n + isCorrectWithQuestions() : array of int\n + getLabel() : string\n + getPicture() : Image}"]
 
-#  5[label = "{Student| - rank : string\n - exp : int\n - expToNextRank : int|+Student(username : string, displayName : string)\n + getRank() : string\n + getExp() : int\n + getExpToNextRank() : int\n + earnExp(exp : int)}"]
+ Molecule [label = "{Molecule| - dci : string\n - formuledcn : string\n - difficulte : int| + Molecule(dci : string, formuledcn : string, poso24h : Poso, poso1Dose : Poso, difficulte : int)\n + getDCI() : string\n + getFormuleDCN() : string\n + getPoso24h() : Poso\n + getPoso1Dose() : Poso\n + getDifficulte() : int\n + addClasse(classe : Classe)\n + countClasses() : int\n + getClasse(index : int) : classe\n + hasClasse() : bool\n + addProp(prop : Propriete)\n + countProps() : int\n + getProp(index : int) : Propriete\n + hasProp() : bool\n}"]
 
- 6[label = "{Exercise| - questions : array of Question| + Exercise(title : string)\n + getTitle() : string\n + addQuestion(question : Question)\n + getCurrentQuestion() : Question\n + moveToNextQuestion()}"]
+ Classe [label = "{Classe| - nom : string\n| + Classe(nom : string)\n + getNom() : string}"]
 
- 7[label = "{Question| - instructions : string\n - picture : Image\n - answers : array of Answer\n - chosenAnswerIndex : int|+ Question(instructions : string, picture : Image)\n + getInstructions() : string\n+ getPicture() : Image\n + addAnwer(answer : Answer)\n + getAnswer(answerIndex : int) : Answer\n + countAnswers() : int\n + chooseAnswer(answerIndex : int)\n + isAnswerCorrect() : bool}"]
+ Propriete [label = "{Propriete| - nom : string\n| + Propriete(nom : string)\n + getNom() : string}"]
 
-  8[label = "{Answer| - label : string\n - picture : Image\n|+ Answer(label : string, picture : Image, correct : bool)\n + isCorrect() : bool\n + getLabel() : string\n + getPicture() : Image}"]
+ Poso [label = "{Poso| - qte : int\n - unite : string| + Poso(qte : int, unite : string)\n + getQte() : int\n + getUnite() : string\n + setQte(qte : int)\n + setUnite(unite : string)}"]
 
-#  9[label = "{DataBase| - connected : bool| +DataBase(location : string, username : string, password : string)\n + loadExercise(exerciseName : string) : Exercise\n + addExercise(exercise : Exercise, exerciseName : string) : string\n + loginUser(username : string, hashedPassword : string) : User}"]
+ PosoEnfant [label = "{PosoEnfant| - voie : int\n - ageMin : int\n - ageMax : int| + PosoEnfant(voie : int, ageMin : int, ageMax : int)\n + getAgeMin() : int\n + getAgeMax() : int}"]
 
 
-6->7 [arrowtail=odiamond]
-7->6 [arrowtail=vee];
-7->8 [arrowtail=odiamond];
-8->7 [arrowtail=vee];
+Exercise->Question [arrowtail=odiamond, taillabel="0..* "]
+Question->Answer [arrowtail=odiamond, taillabel="0..* "]
+Molecule->Classe [arrowtail=none, taillabel="1..*   "];
+Molecule->Propriete [arrowtail=none, taillabel="1..*"];
+Poso->PosoEnfant [arrowtail=oarrow] # PosoEnfant hérite de Poso
+Classe->Classe [arrowtail=diamond, headlabel="0..*"]
+Poso->Molecule [arrowtail=none, taillabel="0..1 ", label="- poso24h"]
+Poso->Molecule [arrowtail=none, taillabel="0..1", label="- poso1Dose"]
+PosoEnfant->Molecule [arrowtail=none, taillabel="0..*"]
 
-#  2->3
-#  2->4
-#  5->5[constraint=false, arrowtail=odiamond]
-#  4->3[constraint=false, arrowtail=odiamond]
-#  2->5[constraint=false, arrowtail=odiamond]
-#  5->6[arrowtail=odiamond]
 }
