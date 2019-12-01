@@ -9,9 +9,9 @@ digraph hierarchy {
 
  Answer [label = "{Answer| - label : string\n - picture : Image\n|+ Answer(label : string, picture : Image, correct : bool)\n + isCorrectWithQuestions() : array of int\n + getLabel() : string\n + getPicture() : Image}"]
 
- Molecule [label = "{Molecule| - dci : string\n - formuledcn : string\n - difficulte : int| + Molecule(dci : string, formuledcn : string, poso24h : Poso, poso1Dose : Poso, difficulte : int)\n + getDCI() : string\n + getFormuleDCN() : string\n + getPoso24h() : Poso\n + getPoso1Dose() : Poso\n + getDifficulte() : int\n + addClasse(classe : Classe)\n + countClasses() : int\n + getClasse(index : int) : classe\n + hasClasse() : bool\n + addProp(prop : Propriete)\n + countProps() : int\n + getProp(index : int) : Propriete\n + hasProp() : bool\n}"]
+ Molecule [label = "{Molecule| - dci : string\n - formuledcn : string\n - difficulte : int| + Molecule(dci : string, formuledcn : string, poso24h : Poso, poso1Dose : Poso, difficulte : int)\n + getDCI() : string\n + getFormuleDCN() : string\n + getPoso24h() : Poso\n + getPoso1Dose() : Poso\n + getDifficulte() : int\n + addClasse(classe : Classe)\n + countClasses() : int\n + getClasse(index : int) : Classe\n + hasClasse() : bool\n + addProp(prop : Propriete)\n + countProps() : int\n + getProp(index : int) : Propriete\n + hasProp() : bool\n}"]
 
- Classe [label = "{Classe| - nom : string\n| + Classe(nom : string)\n + getNom() : string}"]
+ Classe [label = "{Classe| - nom : string\n| + Classe(nom : string)\n + getNom() : string\n + addSousClasse(sousClasse : Classe)\n + countSousClasses() : int\n + getSousClasse(index : int) : Classe\n + hasSousClasse(sousClasse : Classe) : bool}"]
 
  Propriete [label = "{Propriete| - nom : string\n| + Propriete(nom : string)\n + getNom() : string}"]
 
