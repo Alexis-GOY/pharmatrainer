@@ -1,0 +1,10 @@
+export const SET_APP_PAGE = 'SET_APP_PAGE';
+
+export const CLEAR_EX_CONF = 'CLEAR_EX_CONF';
+export const PICK_EXERCISE = 'PICK_EXERCISE';
+export const PICK_LEVEL = 'PICK_LEVEL';
+
+export const SET_EXERCISE_PAGE = 'SET_EXERCISE_PICKER_STATE';
+export const SET_EXERCISE = 'SET_EXERCISE';
+export const FINISH_EXERCISE = 'FINISH_EXERCISE';
+export const SET_EX_CONF_DATA = 'SET_EX_CONF_DATA';

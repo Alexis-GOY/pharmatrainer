@@ -1,0 +1,101 @@
+.app-top {
+    height: 100px;
+}
+
+.app-top, .app-top * {
+    background: #091540;
+    color: #f4f2f2;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                     supported by Chrome, Opera and Firefox */
+}
+
+.option-button {
+    display: none;
+}
+
+.top-banner {
+    /*height: 7.5vh;*/
+    justify-content: center;
+}
+
+.main-navbar {
+    /*font-weight: 3vh;*/
+}
+
+.form-control[type="text"] {
+    border: 1px #627fc1 solid;
+}
+
+.form-control[type="text"]:focus {
+    border: 1px #1d3461 solid;
+}
+
+*:focus {
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .app-top {
+        height: 40px;
+        padding: 4px;
+
+        vertical-align: middle;
+    }
+
+    .top-banner {
+        justify-content: space-between;
+        height: 30px;
+    }
+
+    .app-top h1 {
+        margin-top: 3px;
+        font-size: 30px;
+    }
+
+    .main-navbar {
+        display: none;
+    }
+
+    .option-button {
+        display: inline-block;
+        text-align: center;
+
+        width: 32px;
+        height: 32px;
+
+        line-height: 30px;
+        font-size: 30px;
+    }
+
+    .main-dropmenu {
+        position: absolute;
+    }
+}
+
+@media (max-width: 576px) {
+    .app-top h1 {
+        font-size: 20px;
+    }
+}
+
+.bouton-reponse {
+    min-height: 75px;
+}
+
+.question, .editor-box, .exercise-conf-box {
+    background: #b9c0da;
+}
+
+.select-word-type {
+    max-height: 300px;
+    overflow-y: scroll;
+}
