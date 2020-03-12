@@ -34,14 +34,14 @@ export function ExerciseResults({exercise}: ExerciseResultsStateProps) {
 
     const renderMCQHistoryBox = (question: QuestionMCQData, historyEntry: QuestionMCQHistoryEntry, entryIndex: number) => {
         const answerIndex = historyEntry.answer;
-        let answer = "";
+        let answer = "indéfinie";
         let tooSlow = false;
-        if (answerIndex !== -2) answer = question.answers[answerIndex].label;
+        if ((answerIndex !== undefined) && (answerIndex !== -2)) answer = question.answers[answerIndex].label;
         else tooSlow = true;
         const rightAnswerIndex = question.rightAnswer;
         const isAnswerCorrect = (answerIndex === rightAnswerIndex);
         const questionLabel = question.label;
-        const rightAnswerLabel = question.answers[rightAnswerIndex];
+        const rightAnswerLabel = question.answers[rightAnswerIndex].label;
 
         return (
             <Grid container item className={classes.root} spacing={2}>
@@ -112,7 +112,7 @@ export function ExerciseResults({exercise}: ExerciseResultsStateProps) {
                         </Grid>
                         <Grid item className={classes.root} xs={12}>
                             <Typography className={classes.root}>
-                            Votre réponse était "{answer}", which is wrong.
+                            Votre réponse était "{answer}", ce qui est faux.
                             </Typography>
                         </Grid>
                         <Grid item className={classes.root} xs={12}>
