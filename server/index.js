@@ -7,7 +7,9 @@ var myParser = require("body-parser");
 var request = require("request");
 var app = express();
 var mysql = require("mysql");
+var fs = require('fs'); //il a fallu ajouter un package pour la gestion des questions avec les images : npm install fs
 
+var imgExoType = [];
 
 /*
  * Login of the database
@@ -86,7 +88,7 @@ function generateReturnList(level, nbQuestions, maxNbAnswers, typeQuestions){
 			{
 				nextQuestionsTab.push(i);
 			}
-	   		var res = {questions: result, nextQuestions: nextQuestionsTab, currentQuestion: 0, history: [], answer: -1, rightAnswers: 0, answerState: 0};
+	   		var res = {questions: result, nextQuestions: nextQuestionsTab, currentQuestion: 0, history: [], answer: -1, rightAnswers: 0, answerState: 0, res: imgExoType};
 			const json = JSON.stringify(res);
 			resolve(json);
 		}, function(error) {
@@ -116,6 +118,7 @@ async function generateListQuestions(level, nbQuestions, maxNbAnswers, typeQuest
 				var promiseGeneration1 = promiseGenerationQuestionProperty(level, maxNbAnswers);
 			break;
 		case "Reconaissance des formules des molécules":
+				imgExoType = [];
 				var promiseGeneration1 = promiseGenerationQuestionRecognizeMolecule(level, maxNbAnswers);
 			break;
 		}
@@ -272,14 +275,34 @@ function promiseGenerationQuestionRecognizeMolecule(level, maxNbAnswers) {
 						if(result[idxAnswer] != undefined)
 						{
 							entitled = "Quelle est la représentation de la molécule \"" + result[idxAnswer].dci + "\" ?";
-							answers.push({label: "img_molecules/" + result[idxAnswer].dci + ".png"});
+							var chemin = "img_molecules/" + result[idxAnswer].dci + ".png";
+							try
+							{ 
+								imgExoType.push("data:image/png;base64," + base64_encode(chemin));
+								answers.push({picId: imgExoType.length-1});
+							}
+							catch
+							{
+								countAnswer--;
+							}
 						}
 					}
 					else
 					{
 						var idxAnswer = integerAlea(0, resultNonMol.length-1);
 						if(resultNonMol[idxAnswer] != undefined)
-							answers.push({label: "img_molecules/" + resultNonMol[idxAnswer].dci + ".png"});
+						{
+							var chemin = "img_molecules/" + result[idxAnswer].dci + ".png";
+							try
+							{ 
+								imgExoType.push("data:image/png;base64," + base64_encode(chemin));
+								answers.push({picId: imgExoType.length-1});
+							}
+							catch
+							{
+								countAnswer--;
+							}
+						}
 					}
 					countAnswer++;
 				}
@@ -407,4 +430,18 @@ function selectMoleculeNotEqual(idMol) {
 			resolve(result);
 		});
 	});
+}
+
+
+/***********************************************
+ ***************** IMG GESTION *****************
+ ***********************************************/
+/*
+ * function to encode file data to base64 encoded string
+ */
+function base64_encode(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return new Buffer(bitmap).toString('base64');
 }
