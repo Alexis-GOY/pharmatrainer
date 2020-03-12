@@ -165,7 +165,7 @@ export function Exercise(props: ExerciseProps) {
                     <TimerComponent {...timer} />
                 </Grid>
             )}
-            {<Fade in={answered} timeout={{
+            {/*<Fade in={answered} timeout={{
                                             appear: 1000,
                                             enter: 500,
                                             exit: 0,
@@ -226,7 +226,7 @@ export function Exercise(props: ExerciseProps) {
                         {renderNextButton()}
                     </Grid>
                 </Grid>
-                </Fade>}
+                    </Fade>*/}
         </Grid>
     );
 }
