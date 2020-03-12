@@ -171,7 +171,7 @@ export default function useExerciseManager(
     }
 
     if (hasTimer && !questionStartTimer.isTimeout()) {
-        question.label = "Get ready...";
+        question.label = "Préparez-vous...";
     }
 
     let countQuestions = exercise.questions.length;

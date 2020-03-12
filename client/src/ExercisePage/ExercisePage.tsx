@@ -68,7 +68,7 @@ export const ExercisePage = connect(mapStateToProps, mapDispatchToProps)
 
     let timerOptions: TimerOptions = {
         questionStartTime: 1000,
-        questionTime: 4000,
+        questionTime: 15000,
     };
 
     return (

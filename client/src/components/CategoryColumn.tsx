@@ -167,7 +167,7 @@ function SearchBar(props: SearchBarProps) {
 
     return (
         <FormControl className={classes.root} color={"primary"} size={"small"} fullWidth>
-            <InputLabel htmlFor={id}>Search</InputLabel>
+            <InputLabel htmlFor={id}>Chercher...</InputLabel>
             <Input
                 id={id}
                 type={"text"}

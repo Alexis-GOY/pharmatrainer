@@ -105,7 +105,7 @@ const App = connect(mapStateToProps, mapDispatchToProps)
             <List>
                 <ListItem button onClick={navTrain} selected={isPageOpen(APP_PAGE_TRAIN)}>
                     <ListItemIcon><MenuBookIcon/></ListItemIcon>
-                    <ListItemText primary={"Train"}/>
+                    <ListItemText primary={"S'entraîner"}/>
                 </ListItem>
             </List>
             {/*<Divider/>*/}

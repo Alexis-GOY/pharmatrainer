@@ -52,7 +52,7 @@ export const ExercisePicker = connect(mapStateToProps, mapDispatchToProps)
         <Grid container className={classes.root} alignItems="center" spacing={3} style={{padding: 10, width: 750}}>
             <Grid item xs={12} className={classes.root}>
                 <Typography variant="h2" style={{textAlign: "center"}}>
-                    Exercise configuration
+                    Configuration de l'exercice
                 </Typography>
             </Grid>
             <Grid item xs={12} className={classes.root}>
@@ -95,7 +95,7 @@ export const ExercisePicker = connect(mapStateToProps, mapDispatchToProps)
                     <Box className={classes.root}>
                         <Button className={classes.root} color={"primary"}
                                 onClick={onStartExercise}>
-                            Start the exercise
+                            Commencer l'exercice
                         </Button>
                     </Box>
                 </Grow>

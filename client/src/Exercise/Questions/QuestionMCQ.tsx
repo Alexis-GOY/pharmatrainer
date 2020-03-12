@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import React, { useState } from "react";
-import { useStyles } from "../../app_modules/PageStyles";
+import { useStyles, styleObject } from "../../app_modules/PageStyles";
 import { randomizeArray } from "../../ArrayUtils/ArrayAlgorithms";
 import { QuestionMCQData } from "../ExerciseStateTypes";
 import { QuestionProps } from "./Question";
@@ -39,6 +39,13 @@ export default function QuestionMCQ(props: QuestionMCQProps) {
         return isRightAnswer(answerIndex)
             ? classes.successElem
             : classes.errorElem;
+    };
+
+    const getAnswerStyle = (answerIndex: number) => {
+        if(!locked) return {};
+        return isRightAnswer(answerIndex)
+            ? styleObject.successElem
+            : styleObject.errorElem;
     };
 
     const onSetAnswer = (answer: number) => () => {
@@ -101,6 +108,7 @@ export default function QuestionMCQ(props: QuestionMCQProps) {
                                             }
                                             color={"primary"}
                                             onClick={onSetAnswer(answer)}
+                                            style={{...getAnswerStyle(answer), textTransform: "none" }}
                                             //disabled={answered}
                                             startIcon={
                                                 <Box className={classes.root}>
@@ -114,7 +122,6 @@ export default function QuestionMCQ(props: QuestionMCQProps) {
                                                         ) && <ClearIcon />}
                                                 </Box>
                                             }
-                                            style={{ textTransform: "none" }}
                                         >
                                             <Grid
                                                 container

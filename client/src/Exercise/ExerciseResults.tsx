@@ -58,17 +58,17 @@ export function ExerciseResults({exercise}: ExerciseResultsStateProps) {
                 }}>
                     <Grid item className={classes.root} xs={12}>
                         <Typography className={classes.root}>
-                            Well done!
+                            Exact !
                         </Typography>
                     </Grid>
                     <Grid item className={classes.root} xs={12}>
                         <Typography className={classes.root}>
-                            The question was : {questionLabel}
+                            La question était : {questionLabel}
                         </Typography>
                     </Grid>
                     <Grid item className={classes.root} xs={12}>
                         <Typography className={classes.root}>
-                            Your answer was "{answer}", which is right!
+                            Votre réponse était "{answer}", qui est une bonne réponse !
                         </Typography>
                     </Grid>
                 </Grid>
@@ -83,17 +83,17 @@ export function ExerciseResults({exercise}: ExerciseResultsStateProps) {
                     <Grid container item className={classes.root} xs={12}>
                         <Grid item className={classes.root} xs={12}>
                             <Typography className={classes.root}>
-                                Too slow! You didn't answer in time.
+                                Trop lent! Vous n'avez pas répondu à temps.
                             </Typography>
                         </Grid>
                         <Grid item className={classes.root} xs={12}>
                             <Typography className={classes.root}>
-                                The question was : {questionLabel}
+                                La question était : {questionLabel}
                             </Typography>
                         </Grid>
                         <Grid item className={classes.root} xs={12}>
                             <Typography className={classes.root}>
-                                The right answer is "{rightAnswerLabel}".
+                                La bonne réponse était : "{rightAnswerLabel}".
                             </Typography>
                         </Grid>
                     </Grid>
@@ -102,22 +102,22 @@ export function ExerciseResults({exercise}: ExerciseResultsStateProps) {
                     <Grid container item className={classes.root} xs={12}>
                         <Grid item className={classes.root} xs={12}>
                             <Typography className={classes.root}>
-                                Wrong answer!
+                                Mauvaise réponse !
                             </Typography>
                         </Grid>
                         <Grid item className={classes.root} xs={12}>
                             <Typography className={classes.root}>
-                                The question was : {questionLabel}
+                            La question était : {questionLabel}
                             </Typography>
                         </Grid>
                         <Grid item className={classes.root} xs={12}>
                             <Typography className={classes.root}>
-                                Your answer was "{answer}", which is wrong.
+                            Votre réponse était "{answer}", which is wrong.
                             </Typography>
                         </Grid>
                         <Grid item className={classes.root} xs={12}>
                             <Typography className={classes.root}>
-                                The right answer is "{rightAnswerLabel}".
+                            La bonne réponse était "{rightAnswerLabel}".
                             </Typography>
                         </Grid>
                     </Grid>
@@ -135,7 +135,7 @@ export function ExerciseResults({exercise}: ExerciseResultsStateProps) {
             </Grid>
             <Grid item xs={12} className={classes.root}>
                 <Typography variant="h2" style={{textAlign: "center"}}>
-                    Exercise summary
+                    Résumé de l'exercice
                 </Typography>
             </Grid>
             {exercise.history.map((historyEntry: ExerciseHistoryEntry, entryIndex: number) => {

@@ -60,7 +60,7 @@ export function Exercise(props: ExerciseProps) {
         if (answerState === AnswerState.TIMEOUT) {
             return (
                 <Typography className={classes.root} variant={"h6"}>
-                    Trop tard! la bonne réponse "{rightAnswerText}".
+                    Trop tard! la bonne réponse est "{rightAnswerText}".
                 </Typography>
             );
         } else {
@@ -191,7 +191,7 @@ export function Exercise(props: ExerciseProps) {
                                         className={classes.root}
                                         variant={"h6"}
                                     >
-                                        You're right!
+                                        Exact!
                                     </Typography>
                                 </React.Fragment>
                             </Grid>
