@@ -7,7 +7,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import React from "react";
-import {errorBoxStyle, successBoxStyle, useStyles} from "../app_modules/PageStyles";
+import {useStyles} from "../app_modules/PageStyles";
 import TimerComponent from "../ExercisePage/TimerComponent";
 import {AnswerState, ExerciseData, ExerciseHistoryEntry} from "./ExerciseStateTypes";
 import Question from "./Questions/Question";
@@ -160,12 +160,12 @@ export function Exercise(props: ExerciseProps) {
                     />
                 )}
             </Grid>
-            {hasTimer && (
+            {(hasTimer && !answered) && (
                 <Grid item xs={12} className={classes.root}>
                     <TimerComponent {...timer} />
                 </Grid>
             )}
-            {/*<Fade in={answered} timeout={{
+            {<Fade in={answered} timeout={{
                                             appear: 1000,
                                             enter: 500,
                                             exit: 0,
@@ -177,7 +177,7 @@ export function Exercise(props: ExerciseProps) {
                     className={classes.root}
                     spacing={2}
                 >
-                    {isCorrect && (
+                    {/* {isCorrect && (
                         <Grid
                             container
                             item
@@ -221,12 +221,12 @@ export function Exercise(props: ExerciseProps) {
                                 </React.Fragment>
                             </Grid>
                         </Grid>
-                    )}
+                    )} */}
                     <Grid item xs={12} className={classes.root}>
                         {renderNextButton()}
                     </Grid>
                 </Grid>
-                    </Fade>*/}
+                    </Fade>}
         </Grid>
     );
 }
